@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Awesome Quotes</title>
+    <style>
+      *,
+      ::before,
+      ::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+        line-height: 1.5;
+        font-weight: 400;
+
+        font-synthesis: none;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-text-size-adjust: 100%;
+      }
+
+      body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      #app {
+        min-width: 80%;
+        max-width: 850px;
+        margin: 0 auto;
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 1em 3em;
+      }
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .logo {
+        font-weight: 600;
+        text-transform: uppercase;
+      }
+
+      .notification {
+        display: flex;
+        justify-content: space-between;
+        padding: 15px 10px;
+        align-items: center;
+        background-color: slategrey;
+        color: #eee;
+        border-radius: 0.25em;
+      }
+
+      .close-notif {
+        font-weight: 600;
+        cursor: pointer;
+        font-size: 1.5em;
+      }
+
+      .modal-container {
+        margin-top: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .close {
+        display: none;
+      }
+
+      .btn {
+        padding: 5px 10px;
+        border: 2px solid slategray;
+      }
+
+      .btn:hover,
+      a {
+        cursor: pointer;
+      }
+
+      a {
+        color: slateblue;
+      }
+
+      .dialog-btn {
+        padding: 1.5em 3.2em;
+      }
+
+      .inputs {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .inputs h2 {
+        align-self: flex-start;
+      }
+
+      .inputs p {
+        align-self: flex-end;
+        font-size: 0.9em;
+      }
+
+      .btns {
+        display: flex;
+        justify-content: flex-end;
+        gap: 20px;
+        align-self: flex-end;
+      }
+
+      dialog {
+        padding: 0.5em;
+        margin: 0 auto;
+      }
+
+      dialog [type='text'] {
+        width: 100%;
+        padding: 10px;
+      }
+
+      textarea {
+        width: inherit;
+        padding: 10px;
+        resize: none;
+      }
+
+      .main {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 40px;
+      }
+
+      .card {
+        flex-basis: 300px;
+        border: 2px solid slategray;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .quote {
+        padding: 0.5em;
+        font-size: 0.9em;
+        font-style: italic;
+        border: 2px solid slategrey;
+        min-height: 200px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .quote-details {
+        display: flex;
+        font-size: 0.8em;
+        justify-content: space-between;
+        flex: 1;
+      }
+
+      .card form {
+        flex: 1;
+      }
+
+      .quote-sym {
+        display: block;
+        font-size: 1.5em;
+        text-align: center;
+        font-weight: 600;
+      }
+
+      .make-tips {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .make-tips input[type='number'] {
+        width: 100%;
+        padding: 10px;
+        border: 2px solid slategray;
+        border-right: none;
+      }
+
+      .make-tip {
+        padding: 4px 15px;
+      }
+
+      .close {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div class="header">
+        <div class="logo">Awesome Quotes</div>
+        <div class="balance-container">
+          Balance: <span class="balance">0</span> cUSD
+        </div>
+      </div>
+
+      <div class="notification">
+        <p class="notification-text">⌛ Loading DApp...</p>
+        <span class="close-notif">&times;</span>
+      </div>
+
+      <div class="modal-container">
+        <button class="btn dialog-btn">Add Quote</button>
+      </div>
+
+      <div class="main" id="main"></div>
+
+      <dialog class="quote-dialog">
+        <form class="quote-form">
+          <div class="inputs">
+            <h2>Add a quote</h2>
+            <input
+              type="text"
+              placeholder="Your name goes here..."
+              required
+              maxlength="25"
+              id="author"
+            />
+
+            <textarea
+              name=""
+              id="quote"
+              cols="30"
+              rows="10"
+              placeholder="Your quote goes here... (250 chars)"
+              required
+              maxlength="250"
+            ></textarea>
+
+            <p><span class="char-remaining">7</span> characters remaining</p>
+
+            <div class="btns">
+              <button class="btn cancel" type="button">Cancel</button>
+              <button class="btn confirm" type="submit">Confirm</button>
+            </div>
+          </div>
+        </form>
+      </dialog>
+    </div>
+  <script type="text/javascript" src="main.js"></script></body>
+</html>
