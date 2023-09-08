@@ -4,7 +4,7 @@ import Erc20Abi from '../../contracts/erc20.abi.json';
 import AwesomeQuotesAbi from '../../contracts/awesomequotes.abi.json';
 
 export const ERCDecimals = 18;
-export const AQAddress = '0xfAC648BF8Bc542e9aE91F8dbB0b02Ebe5599E2F4';
+export const AQAddress = '0xE86D3A637C378a88523A79094Ff1485e071306A4';
 export const cusdAddress = '0x874069Fa1Eb16D44d622F2e0Ca25eeA172369bC1';
 
 export const notification = {
