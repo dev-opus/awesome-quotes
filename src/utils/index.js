@@ -79,7 +79,7 @@ export const getQuote = async (index, contract) => {
     author: quote[1],
     quote: quote[2],
     tips: quote[3],
-    createdAt: dateFormatter.toDate(quote[4]),
+    date: dateFormatter.toDate(quote[4]),
   };
 };
 

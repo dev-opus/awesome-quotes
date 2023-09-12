@@ -47,9 +47,15 @@ window.addEventListener('load', async () => {
       e.preventDefault();
       e.target.previousElementSibling.textContent = '';
 
-      const tip = new BigNumber(e.target.previousElementSibling.value)
-        .shiftedBy(ERCDecimals)
-        .toString();
+      const _tip = +e.target.previousElementSibling.value;
+
+      if (_tip <= 0) {
+        notification.on('🚫 Cannot perform a tip with that amount!');
+        e.target.previousElementSibling.value = '';
+        return;
+      }
+
+      const tip = new BigNumber(_tip).shiftedBy(ERCDecimals).toString();
       const index = e.target.dataset.index;
 
       const error = await makeTip({ kit, contract, tip, index, quoteStorage });
@@ -75,7 +81,12 @@ window.addEventListener('load', async () => {
       quoteDialog.close();
 
       notification.on('⌛ Adding your quote...');
-      await createQuote(contract, kit, payload);
+      try {
+        await createQuote(contract, kit, payload);
+      } catch (error) {
+        notification.on(`🚫 ${error.message}`);
+        return;
+      }
 
       const quotes = await getQuotes(contract);
       quoteStorage = quotes;
