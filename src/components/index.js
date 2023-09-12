@@ -26,6 +26,7 @@ export const card = ({ quote, author, date, tips, index, address }) => {
               <input
                 type="number"
                 step="0.01"
+                min="0.01"
                 placeholder="Enter an amount to tip..."
                 required
                 class="tip"
