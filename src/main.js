@@ -50,7 +50,7 @@ window.addEventListener('load', async () => {
       const _tip = +e.target.previousElementSibling.value;
 
       if (!_tip) {
-        notification.on(`🚫 Cannot without an amount!`);
+        notification.on(`🚫 Cannot tip without an amount!`);
         return;
       }
 
