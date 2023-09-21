@@ -49,6 +49,11 @@ window.addEventListener('load', async () => {
 
       const _tip = +e.target.previousElementSibling.value;
 
+      if (!_tip) {
+        notification.on(`🚫 Cannot without an amount!`);
+        return;
+      }
+
       if (_tip <= 0) {
         notification.on('🚫 Cannot perform a tip with that amount!');
         e.target.previousElementSibling.value = '';
@@ -62,6 +67,7 @@ window.addEventListener('load', async () => {
 
       if (error) {
         notification.on(error);
+        return;
       }
 
       const tippedQuote = await getQuote(index, contract);
